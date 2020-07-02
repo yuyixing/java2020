@@ -6,6 +6,8 @@ import java.util.Map;
 
 
 /**
+ * 数组中重复的数字
+ *
  * @author yuyx
  */
 public class Offer03 {

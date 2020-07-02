@@ -1,6 +1,8 @@
 package com.yuyx.offer;
 
 /**
+ * 二维数组中的查找
+ *
  * @author yuyx
  */
 public class Offer04 {
