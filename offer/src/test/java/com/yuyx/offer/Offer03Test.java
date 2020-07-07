@@ -10,6 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class Offer03Test {
     private Offer03 offer;
     private int[] nums;
+    private static final int REPEAT_COUNT = 1;
 
     @BeforeAll
     static void init() {
@@ -39,32 +40,33 @@ class Offer03Test {
     void doNothing() {
     }
 
-    @Test
+    @RepeatedTest(value = REPEAT_COUNT, name = "{displayName} {currentRepetition}/{totalRepetitions}")
+    @DisplayName("Repeat!")
     void getRepeat0101() {
         assertTrue(Arrays.binarySearch(new int[]{2, 3}, offer.getRepeat0101(nums)) >= 0);
     }
 
-    @Test
+    @RepeatedTest(REPEAT_COUNT)
     void getRepeat0102() {
         assertTrue(Arrays.binarySearch(new int[]{2, 3}, offer.getRepeat0102(nums)) >= 0);
     }
 
-    @Test
+    @RepeatedTest(REPEAT_COUNT)
     void getRepeat0103() {
         assertTrue(Arrays.binarySearch(new int[]{2, 3}, offer.getRepeat0103(nums)) >= 0);
     }
 
-    @Test
+    @RepeatedTest(REPEAT_COUNT)
     void getRepeat0104() {
         assertTrue(Arrays.binarySearch(new int[]{2, 3}, offer.getRepeat0104(nums)) >= 0);
     }
 
-    @Test
+    @RepeatedTest(REPEAT_COUNT)
     void getRepeat0201() {
         assertTrue(Arrays.binarySearch(new int[]{2, 3, 6}, offer.getRepeat0201(nums)) >= 0);
     }
 
-    @Test
+    @RepeatedTest(REPEAT_COUNT)
     void getRepeat0202() {
         assertTrue(Arrays.binarySearch(new int[]{2, 3, 6}, offer.getRepeat0202(nums)) >= 0);
     }
