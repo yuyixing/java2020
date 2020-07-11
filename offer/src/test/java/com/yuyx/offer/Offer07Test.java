@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class Offer07Test {
     private Offer07 offer;
-    private TreeNode expected;
+    private TreeNode tree;
 
     @BeforeAll
     static void init() {
@@ -19,11 +19,12 @@ class Offer07Test {
     @BeforeEach
     void setUp() {
         offer = new Offer07();
-        expected = new TreeNode(3);
-        expected.left = new TreeNode(9);
-        expected.right = new TreeNode(20);
-        expected.right.left = new TreeNode(15);
-        expected.right.right = new TreeNode(7);
+        tree = new TreeNode(3);
+        tree.left = new TreeNode(9);
+        tree.right = new TreeNode(20);
+        tree.right.left = new TreeNode(15);
+        tree.right.right = new TreeNode(7);
+        tree = TreeNode.createTreeNodeByLevelOrder(new Integer[]{3, 9, 20, null, null, 15, 7});
     }
 
     @AfterEach
@@ -37,13 +38,11 @@ class Offer07Test {
 
     @Test
     void getRepeat0101() {
-        TreeNode actual = offer.buildTree0101(new int[]{3, 9, 20, 15, 7}, new int[]{9, 3, 15, 20, 7});
-        assertEquals(expected, actual);
+        assertEquals(tree, offer.buildTree0101(tree.getPreorder(), tree.getInorder()));
     }
 
     @Test
     void getRepeat0102() {
-        TreeNode actual = offer.buildTree0102(new int[]{3, 9, 20, 15, 7}, new int[]{9, 3, 15, 20, 7});
-        assertEquals(expected, actual);
+        assertEquals(tree, offer.buildTree0102(tree.getPreorder(), tree.getInorder()));
     }
 }

@@ -82,6 +82,6 @@ public class Offer07 {
     }
 
     private boolean paramsInvalid(int[] preorder, int[] inorder) {
-        return preorder.length == 0 || inorder.length == 0;
+        return preorder == null || preorder.length == 0 || inorder == null || inorder.length == 0;
     }
 }
