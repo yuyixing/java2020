@@ -1,6 +1,8 @@
 package com.yuyx.offer;
 
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -8,14 +10,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class Offer04Test {
     private Offer04 offer;
     private int[][] nums;
-
-    @BeforeAll
-    static void init() {
-    }
-
-    @AfterAll
-    static void done() {
-    }
 
     @BeforeEach
     void setUp() {
@@ -31,10 +25,6 @@ class Offer04Test {
     void tearDown() {
         offer = null;
         nums = null;
-    }
-
-    @Test
-    void doNothing() {
     }
 
     @Test

@@ -2,9 +2,11 @@ package com.yuyx.offer;
 
 import org.junit.jupiter.api.*;
 
+import java.time.LocalDateTime;
 import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assumptions.assumeTrue;
 
 @DisplayName("Testing using JUnit 5")
 class Offer03Test {
@@ -14,14 +16,9 @@ class Offer03Test {
 
     @BeforeAll
     static void init() {
-        // Do something before ANY test is run in this class
-//        LocalDateTime ldt = LocalDateTime.now();
+        LocalDateTime ldt = LocalDateTime.now();
 //        assumeTrue(ldt.getDayOfWeek().getValue() == 5);   //前置条件
-    }
-
-    @AfterAll
-    static void done() {
-        // Do something after ALL tests in this class are run
+        assumeTrue(ldt.getDayOfYear() != 1);
     }
 
     @BeforeEach
@@ -34,10 +31,6 @@ class Offer03Test {
     void tearDown() {
         offer = null;
         nums = null;
-    }
-
-    @Test
-    void doNothing() {
     }
 
     @RepeatedTest(value = REPEAT_COUNT, name = "{displayName} {currentRepetition}/{totalRepetitions}")

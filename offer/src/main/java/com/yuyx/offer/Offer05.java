@@ -30,19 +30,10 @@ public class Offer05 {
         }
 
         char[] chars = s.toCharArray();
-        int charsLength = chars.length;
+        char[] newChars = createNewCharsBaseOfSpaceCount(chars);
 
-        int spaceCount = 0;
-        for (char aChar : chars) {
-            if (Objects.equals(aChar, ' ')) {
-                spaceCount++;
-            }
-        }
-
-        char[] newChars = new char[charsLength + spaceCount * 2];
         int newCharsLength = newChars.length;
-
-        int charsIndex = charsLength - 1;
+        int charsIndex = chars.length - 1;
         int newCharsIndex = newCharsLength - 1;
 
         while (charsIndex >= 0) {
@@ -70,16 +61,8 @@ public class Offer05 {
         }
 
         char[] chars = s.toCharArray();
-        int charsLength = chars.length;
+        char[] newChars = createNewCharsBaseOfSpaceCount(chars);
 
-        int spaceCount = 0;
-        for (char aChar : chars) {
-            if (Objects.equals(aChar, ' ')) {
-                spaceCount++;
-            }
-        }
-
-        char[] newChars = new char[charsLength + spaceCount * 2];
         int newCharsIndex = 0;
 
         for (char aChar : chars) {
@@ -93,6 +76,19 @@ public class Offer05 {
         }
 
         return String.valueOf(newChars);
+    }
+
+    private char[] createNewCharsBaseOfSpaceCount(char[] chars) {
+        int charsLength = chars.length;
+
+        int spaceCount = 0;
+        for (char aChar : chars) {
+            if (Objects.equals(aChar, ' ')) {
+                spaceCount++;
+            }
+        }
+
+        return new char[charsLength + spaceCount * 2];
     }
 
     /***

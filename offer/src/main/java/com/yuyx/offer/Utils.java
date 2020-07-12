@@ -36,7 +36,7 @@ public class Utils {
         return Arrays.asList(ints);
     }
 
-    public static int[][] listsTo2DInts(List<List<Integer>> lists) {
+    public static int[][] listsTo2dInts(List<List<Integer>> lists) {
         int listsSize = lists.size();
         int maxListSize = 0;
         for (List<Integer> list : lists) {
@@ -63,5 +63,14 @@ public class Utils {
             list.addAll(lists.get(i));
         }
         return Utils.listToInts(list);
+    }
+
+    public static int getIndexOfInts(int[] ints, int val) {
+        for (int i = 0; i < ints.length; i++) {
+            if (ints[i] == val) {
+                return i;
+            }
+        }
+        return -1;
     }
 }

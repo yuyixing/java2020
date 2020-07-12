@@ -1,6 +1,8 @@
 package com.yuyx.offer;
 
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -8,14 +10,6 @@ class Offer05Test {
     private Offer05 offer;
     private String before;
     private String after;
-
-    @BeforeAll
-    static void init() {
-    }
-
-    @AfterAll
-    static void done() {
-    }
 
     @BeforeEach
     void setUp() {
@@ -29,10 +23,6 @@ class Offer05Test {
         offer = null;
         before = null;
         after = null;
-    }
-
-    @Test
-    void doNothing() {
     }
 
     @Test

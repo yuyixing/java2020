@@ -1,6 +1,7 @@
 package com.yuyx.offer;
 
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,25 +12,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class TreeNodeTest {
     private TreeNode treeNode;
 
-    @BeforeAll
-    static void init() {
-    }
-
-    @AfterAll
-    static void done() {
-    }
-
     @BeforeEach
     void setUp() {
         treeNode = TreeNode.createTreeNodeByLevelOrder(new Integer[]{1, 2, 3, 4, 5, 6, 7, null, null, 8, 9});
-    }
-
-    @AfterEach
-    void tearDown() {
-    }
-
-    @Test
-    void doNothing() {
     }
 
     @Test
@@ -156,8 +141,31 @@ class TreeNodeTest {
 
     @Test
     void testTreeNodeSize2() {
-        Integer[] integers = {1, 2, 3, 4, 5, 6, 7, null, null, 8, null};
         int expected = 8;
-        assertEquals(expected, TreeNode.createTreeNodeByLevelOrder(integers).size);
+        assertEquals(expected, TreeNode.createTreeNodeByLevelOrder(new Integer[]{1, 2, 3, 4, 5, 6, 7, null, null, 8, null}).size);
+    }
+
+    @Test
+    void testGetSubTreeNodeByPreorder() {
+        TreeNode treeNode = TreeNode.createTreeNodeByLevelOrder(new Integer[]{5, 5, 5, null, 5, 6});
+        TreeNode expected = TreeNode.createTreeNodeByLevelOrder(new Integer[]{5, 5, 5, null, 5, 6});
+        TreeNode actual = treeNode.getSubTreeNodeByPreorder(5);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void testGetSubTreeNodeByInorder() {
+        TreeNode treeNode = TreeNode.createTreeNodeByLevelOrder(new Integer[]{5, 5, 5, null, 5, 6});
+        TreeNode expected = TreeNode.createTreeNodeByLevelOrder(new Integer[]{5, null, 5});
+        TreeNode actual = treeNode.getSubTreeNodeByInorder(5);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void testGetSubTreeNodeByPostorder() {
+        TreeNode treeNode = TreeNode.createTreeNodeByLevelOrder(new Integer[]{5, 5, 5, null, 5, 6});
+        TreeNode expected = TreeNode.createTreeNodeByLevelOrder(new Integer[]{5});
+        TreeNode actual = treeNode.getSubTreeNodeByPostorder(5);
+        assertEquals(expected, actual);
     }
 }

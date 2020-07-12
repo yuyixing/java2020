@@ -1,20 +1,14 @@
 package com.yuyx.offer;
 
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class Offer07Test {
     private Offer07 offer;
     private TreeNode tree;
-
-    @BeforeAll
-    static void init() {
-    }
-
-    @AfterAll
-    static void done() {
-    }
 
     @BeforeEach
     void setUp() {
@@ -30,10 +24,6 @@ class Offer07Test {
     @AfterEach
     void tearDown() {
         offer = null;
-    }
-
-    @Test
-    void doNothing() {
     }
 
     @Test

@@ -107,7 +107,8 @@ public class TreeNode {
         } else {
             node = new TreeNode(integers[index]);
             if (index != 0) {
-                if (index % 2 == 1) {
+                boolean isOdd = index % 2 == 1;
+                if (isOdd) {
                     parentNode = list.get(index / 2);
                     parentNode.left = node;
                 } else {
@@ -241,7 +242,7 @@ public class TreeNode {
     }
 
     public int[][] getLevelOrderTraversal2D() {
-        return Utils.listsTo2DInts(this.getLevelOrderLists());
+        return Utils.listsTo2dInts(this.getLevelOrderLists());
     }
 
     public List<List<Integer>> getLevelOrderLists() {
@@ -270,6 +271,70 @@ public class TreeNode {
         return lists;
     }
 
+    public TreeNode getSubTreeNodeByPreorder(int val) {
+        return subTreeNodePreorderRecursive(this, val);
+    }
+
+    private TreeNode subTreeNodePreorderRecursive(TreeNode node, int val) {
+        if (node == null) {
+            return null;
+        }
+
+        if (node.val == val) {
+            return node;
+        }
+
+        TreeNode treeNode = subTreeNodePreorderRecursive(node.left, val);
+        if (treeNode != null) {
+            return treeNode;
+        }
+        treeNode = subTreeNodePreorderRecursive(node.right, val);
+        return treeNode;
+    }
+
+    public TreeNode getSubTreeNodeByInorder(int val) {
+        return subTreeNodeInorderRecursive(this, val);
+    }
+
+    private TreeNode subTreeNodeInorderRecursive(TreeNode node, int val) {
+        if (node == null) {
+            return null;
+        }
+
+        TreeNode treeNode = subTreeNodePreorderRecursive(node.left, val);
+        if (treeNode != null) {
+            return treeNode;
+        }
+        if (node.val == val) {
+            return node;
+        }
+        treeNode = subTreeNodePreorderRecursive(node.right, val);
+        return treeNode;
+    }
+
+    public TreeNode getSubTreeNodeByPostorder(int val) {
+        return subTreeNodePostorderRecursive(this, val);
+    }
+
+    private TreeNode subTreeNodePostorderRecursive(TreeNode node, int val) {
+        if (node == null) {
+            return null;
+        }
+
+        TreeNode treeNode = subTreeNodePostorderRecursive(node.left, val);
+        if (treeNode != null) {
+            return treeNode;
+        }
+        treeNode = subTreeNodePostorderRecursive(node.right, val);
+        if (treeNode != null) {
+            return treeNode;
+        }
+        if (node.val == val) {
+            return node;
+        }
+        return null;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -283,7 +348,9 @@ public class TreeNode {
         TreeNode treeNode = (TreeNode) obj;
         return (this.val.equals(treeNode.val))
                 && (this.left == null || this.left.equals(treeNode.left))
-                && (this.right == null || this.right.equals(treeNode.right));
+                && (this.right == null || this.right.equals(treeNode.right))
+                && (treeNode.left == null || treeNode.left.equals(this.left))
+                && (treeNode.right == null || treeNode.right.equals(this.right));
     }
 
     @Override
