@@ -22,8 +22,8 @@ public class Offer06 {
             return arr;
         }
         count++;
-        reversePrint0104(head.next);
-        arr[arr.length - count--] = head.val;
+        reversePrint0104(head.getNext());
+        arr[arr.length - count--] = head.getVal();
         return arr;
     }
 
@@ -47,8 +47,8 @@ public class Offer06 {
             lastIndex = count - 1;
             return;
         }
-        recursive(curNode.next, count + 1);
-        arr[lastIndex - count] = curNode.val;
+        recursive(curNode.getNext(), count + 1);
+        arr[lastIndex - count] = curNode.getVal();
     }
 
     /**
@@ -64,13 +64,13 @@ public class Offer06 {
         ListNode curNode = head;
         while (curNode != null) {
             count++;
-            curNode = curNode.next;
+            curNode = curNode.getNext();
         }
         int[] reverseArray = new int[count];
 
         for (int i = count - 1; i >= 0; i--) {
-            reverseArray[i] = head.val;
-            head = head.next;
+            reverseArray[i] = head.getVal();
+            head = head.getNext();
         }
 
         return reverseArray;
@@ -87,8 +87,8 @@ public class Offer06 {
 
         Stack<Integer> stack = new Stack<>();
         while (head != null) {
-            stack.push(head.val);
-            head = head.next;
+            stack.push(head.getVal());
+            head = head.getNext();
         }
         int[] ints = new int[stack.size()];
 

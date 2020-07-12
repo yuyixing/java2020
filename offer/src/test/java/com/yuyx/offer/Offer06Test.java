@@ -22,7 +22,7 @@ class Offer06Test {
         ListNode node;
         for (int i = 10; i > 0; i--) {
             node = new ListNode(i);
-            node.next = head;
+            node.setNext(head);
             head = node;
         }
     }
