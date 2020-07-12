@@ -38,11 +38,11 @@ class Offer07Test {
 
     @Test
     void getRepeat0101() {
-        assertEquals(tree, offer.buildTree0101(tree.getPreorder(), tree.getInorder()));
+        assertEquals(tree, offer.buildTree0101(tree.getPreorderTraversal(), tree.getInorderTraversal()));
     }
 
     @Test
     void getRepeat0102() {
-        assertEquals(tree, offer.buildTree0102(tree.getPreorder(), tree.getInorder()));
+        assertEquals(tree, offer.buildTree0102(tree.getPreorderTraversal(), tree.getInorderTraversal()));
     }
 }

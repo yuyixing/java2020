@@ -39,7 +39,7 @@ public class TreeNode {
     private static TreeNode createByPreorderRecursive(Integer[] integers) {
         Integer val = integers[index++];
         if (val == null) {
-            return new TreeNode();
+            return null;
         }
         TreeNode node = new TreeNode(val);
         node.left = createByPreorderRecursive(integers);
@@ -122,7 +122,7 @@ public class TreeNode {
         createByLevelOrderRecursive(integers, ++index, list);
     }
 
-    public int[] getPreorder() {
+    public int[] getPreorderTraversal() {
         List<Integer> list = new ArrayList<>();
         preorderRecursive(this, list);
         return Utils.listToInts(list);
@@ -160,13 +160,13 @@ public class TreeNode {
         return Utils.listToInts(list);
     }
 
-    public int[] getInorder() {
+    public int[] getInorderTraversal() {
         List<Integer> list = new ArrayList<>();
         inorderRecursive(this, list);
         return Utils.listToInts(list);
     }
 
-    public void inorderRecursive(TreeNode node, List<Integer> list) {
+    private void inorderRecursive(TreeNode node, List<Integer> list) {
         if (node == null) {
             return;
         }
@@ -198,13 +198,13 @@ public class TreeNode {
         return Utils.listToInts(list);
     }
 
-    public int[] getPostorder() {
+    public int[] getPostorderTraversal() {
         List<Integer> list = new ArrayList<>();
         postorderRecursive(this, list);
         return Utils.listToInts(list);
     }
 
-    public void postorderRecursive(TreeNode node, List<Integer> list) {
+    private void postorderRecursive(TreeNode node, List<Integer> list) {
         if (node == null) {
             return;
         }
@@ -236,7 +236,11 @@ public class TreeNode {
         return Utils.listToInts(list);
     }
 
-    public int[][] getLevelOrder() {
+    public int[] getLevelOrderTraversal() {
+        return Utils.listsToInts(this.getLevelOrderLists());
+    }
+
+    public int[][] getLevelOrderTraversal2D() {
         return Utils.listsTo2DInts(this.getLevelOrderLists());
     }
 

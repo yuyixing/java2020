@@ -52,4 +52,16 @@ public class Utils {
         }
         return ints2D;
     }
+
+    public static int[] listsToInts(List<List<Integer>> lists) {
+        int size = lists.size();
+        if (size == 0) {
+            return null;
+        }
+        List<Integer> list = lists.get(0);
+        for (int i = 1; i < lists.size(); i++) {
+            list.addAll(lists.get(i));
+        }
+        return Utils.listToInts(list);
+    }
 }

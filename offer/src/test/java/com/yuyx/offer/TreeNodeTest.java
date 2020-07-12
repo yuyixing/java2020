@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class TreeNodeTest {
-    private TreeNode expectedTree;
+    private TreeNode treeNode;
 
     @BeforeAll
     static void init() {
@@ -21,7 +21,7 @@ class TreeNodeTest {
 
     @BeforeEach
     void setUp() {
-        expectedTree = TreeNode.createTreeNodeByLevelOrder(new Integer[]{1, 2, 3, 4, 5, 6, 7, null, null, 8, 9});
+        treeNode = TreeNode.createTreeNodeByLevelOrder(new Integer[]{1, 2, 3, 4, 5, 6, 7, null, null, 8, 9});
     }
 
     @AfterEach
@@ -34,43 +34,51 @@ class TreeNodeTest {
 
     @Test
     void testEquals() {
-        assertEquals(expectedTree, TreeNode.createTreeNodeByLevelOrder(new Integer[]{1, 2, 3, 4, 5, 6, 7, null, null, 8, 9}));
+        TreeNode expected = TreeNode.createTreeNodeByLevelOrder(new Integer[]{1, 2, 3, 4, 5, 6, 7, null, null, 8, 9});
+        assertEquals(expected, treeNode);
     }
 
     @Test
-    void testPreorder() {
-        assertArrayEquals(new int[]{1, 2, 4, 5, 8, 9, 3, 6, 7}, expectedTree.getPreorder());
+    void testPreorderTraversal() {
+        int[] expected = {1, 2, 4, 5, 8, 9, 3, 6, 7};
+        assertArrayEquals(expected, treeNode.getPreorderTraversal());
     }
 
     @Test
     void getPreorderIteration() {
-        assertArrayEquals(new int[]{1, 2, 4, 5, 8, 9, 3, 6, 7}, expectedTree.getPreorderIteration());
+        int[] expected = {1, 2, 4, 5, 8, 9, 3, 6, 7};
+        assertArrayEquals(expected, treeNode.getPreorderIteration());
     }
 
     @Test
-    void testInorder() {
-        assertArrayEquals(new int[]{4, 2, 8, 5, 9, 1, 6, 3, 7}, expectedTree.getInorder());
+    void testInorderTraversal() {
+        int[] expected = {4, 2, 8, 5, 9, 1, 6, 3, 7};
+        assertArrayEquals(expected, treeNode.getInorderTraversal());
     }
 
     @Test
     void getInorderIteration() {
-        assertArrayEquals(new int[]{4, 2, 8, 5, 9, 1, 6, 3, 7}, expectedTree.getInorderIteration());
+        int[] expected = {4, 2, 8, 5, 9, 1, 6, 3, 7};
+        assertArrayEquals(expected, treeNode.getInorderIteration());
     }
 
     @Test
-    void testPostorder() {
-        assertArrayEquals(new int[]{4, 8, 9, 5, 2, 6, 7, 3, 1}, expectedTree.getPostorder());
+    void testPostorderTraversal() {
+        int[] expected = {4, 8, 9, 5, 2, 6, 7, 3, 1};
+        assertArrayEquals(expected, treeNode.getPostorderTraversal());
     }
 
     @Test
     void getPostorderIteration() {
-        assertArrayEquals(new int[]{4, 8, 9, 5, 2, 6, 7, 3, 1}, expectedTree.getPostorderIteration());
+        int[] expected = {4, 8, 9, 5, 2, 6, 7, 3, 1};
+        assertArrayEquals(expected, treeNode.getPostorderIteration());
     }
 
     @Test
     void testCreateTreeNodeByPreorder() {
-        Integer[] integers = new Integer[]{1, 2, 4, null, null, 5, 8, null, null, 9, null, null, 3, 6, null, null, 7, null, null};
-        assertEquals(expectedTree, TreeNode.createTreeNodeByPreorder(integers));
+        Integer[] integers = {1, 2, 4, null, null, 5, 8, null, null, 9, null, null, 3, 6, null, null, 7, null, null};
+        TreeNode expected = TreeNode.createTreeNodeByPreorder(integers);
+        assertEquals(expected, treeNode);
     }
 
     @Test
@@ -85,8 +93,7 @@ class TreeNodeTest {
         expected.left.right.left = new TreeNode(8);
         expected.left.right.right = new TreeNode(9);
 
-        Integer[] integers = new Integer[]{1, 2, 3, 4, 5, 6, 7, null, null, 8, 9};
-        assertEquals(expected, TreeNode.createTreeNodeByLevelOrder(integers));
+        assertEquals(expected, treeNode);
     }
 
     @Test
@@ -100,12 +107,12 @@ class TreeNodeTest {
         expected.left.right.left = new TreeNode(8);
         expected.left.right.right = new TreeNode(9);
 
-        Integer[] integers = new Integer[]{1, 2, 3, null, 5, 6, 7, null, null, 8, 9};
+        Integer[] integers = {1, 2, 3, null, 5, 6, 7, null, null, 8, 9};
         assertEquals(expected, TreeNode.createTreeNodeByLevelOrder2(integers));
     }
 
     @Test
-    void testLevelOrderLists() {
+    void testLevelOrderTraversalLists() {
         List<List<Integer>> expected = new ArrayList<>();
 
         List<Integer> list1 = new ArrayList<>();
@@ -126,24 +133,31 @@ class TreeNodeTest {
         expected.add(list3);
         expected.add(list4);
 
-        assertEquals(expected, expectedTree.getLevelOrderLists());
+        assertEquals(expected, treeNode.getLevelOrderLists());
     }
 
     @Test
-    void testLevelOrder() {
-        int[][] expected = new int[][]{{1}, {2, 3}, {4, 5, 6, 7}, {8, 9}};
-        assertArrayEquals(expected, expectedTree.getLevelOrder());
+    void testLevelOrderTraversal2D() {
+        int[][] expected = {{1}, {2, 3}, {4, 5, 6, 7}, {8, 9}};
+        assertArrayEquals(expected, treeNode.getLevelOrderTraversal2D());
+    }
+
+    @Test
+    void testLevelOrderTraversal() {
+        int[] expected = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+        assertArrayEquals(expected, treeNode.getLevelOrderTraversal());
     }
 
     @Test
     void testTreeNodeSize() {
-        Integer[] integers = new Integer[]{1, 2, 3, 4, 5, 6, 7, null, null, 8, 9};
-        assertEquals(9, TreeNode.createTreeNodeByLevelOrder(integers).size);
+        int expected = 9;
+        assertEquals(expected, treeNode.size);
     }
 
     @Test
     void testTreeNodeSize2() {
-        Integer[] integers = new Integer[]{1, 2, 3, 4, 5, 6, 7, null, null, 8, null};
-        assertEquals(8, TreeNode.createTreeNodeByLevelOrder(integers).size);
+        Integer[] integers = {1, 2, 3, 4, 5, 6, 7, null, null, 8, null};
+        int expected = 8;
+        assertEquals(expected, TreeNode.createTreeNodeByLevelOrder(integers).size);
     }
 }
