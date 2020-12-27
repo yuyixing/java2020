@@ -1,11 +1,14 @@
 spring:
   datasource:
-    name: springboot_demo #Êı¾İ¿âÃû
+    name: springboot_demo #æ•°æ®åº“å
     url: jdbc:mysql://localhost:3306/springboot_demo  #url
-    username: root    #ÓÃ»§Ãû
-    password: 123456  #ÃÜÂë
-    driver-class-name: com.mysql.cj.jdbc.Driver #Êı¾İ¿âÁ´½ÓÇı¶¯
+    username: root    #ç”¨æˆ·å
+    password: 123456  #å¯†ç 
+    driver-class-name: com.mysql.cj.jdbc.Driver #æ•°æ®åº“é“¾æ¥é©±åŠ¨
 
 mybatis:
-  mapper-locations: classpath:mapper/*.xml  #ÅäÖÃÓ³ÉäÎÄ¼ş
-  type-aliases-package: com.yuyx.demo.bean  #ÅäÖÃÊµÌåÀà
+  mapper-locations: classpath:mapper/*.xml  #é…ç½®æ˜ å°„æ–‡ä»¶
+  type-aliases-package: com.yuyx.demo.bean  #é…ç½®å®ä½“ç±»
+
+server:
+  port: 8087

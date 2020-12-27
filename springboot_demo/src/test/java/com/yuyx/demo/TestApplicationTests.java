@@ -2,6 +2,7 @@ package com.yuyx.demo;
 
 import com.yuyx.demo.bean.UserBean;
 import com.yuyx.demo.service.UserService;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -12,6 +13,7 @@ public class TestApplicationTests {
     @Autowired
     UserService userService;
 
+    @Disabled
     @Test
     public void contextLoads() {
         UserBean userBean = userService.loginIn("a","b");
