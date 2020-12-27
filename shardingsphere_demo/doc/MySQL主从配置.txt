@@ -1,0 +1,22 @@
+主从my.cnf
+
+#创建一个用于主从复制的专用账号，主服务器
+CREATE USER 'db_sync'@'%' IDENTIFIED WITH mysql_native_password BY 'db_sync';
+GRANT REPLICATION SLAVE ON *.* TO 'db_sync'@'%';
+FLUSH PRIVILEGES;
+SHOW MASTER STATUS;
+
+#从服务器
+mysql -uroot -proot
+STOP SLAVE;
+RESET SLAVE;
+CHANGE MASTER TO
+MASTER_HOST='172.17.0.3',
+MASTER_PORT=3306,
+MASTER_USER='db_sync',
+MASTER_PASSWORD='db_sync',
+MASTER_LOG_FILE='mysql-bin.000009',
+MASTER_LOG_POS=155;
+START SLAVE;
+##两个YES
+SHOW SLAVE STATUS;

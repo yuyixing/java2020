@@ -1,0 +1,12 @@
+[mysqld]
+## 开启二进制日志功能，以备Slave作为其它Slave的Master时使用
+log-bin=mysql-slave-bin
+## 设置server_id,注意要唯一
+server_id=200
+replicate_wild_do_table=user_db.%
+replicate_wild_do_table=master_db.%
+replicate_wild_do_table=order_db.%
+replicate_wild_ignore_table=mysql.%
+replicate_wild_ignore_table=sys.%
+replicate_wild_ignore_table=information_schema.%
+replicate_wild_ignore_table=performance_schema.%

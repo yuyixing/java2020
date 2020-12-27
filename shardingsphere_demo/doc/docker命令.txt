@@ -1,0 +1,41 @@
+###msyql5.7
+duso docker run -p 3306:3306 --name mysql \
+-v /usr/local/docker/mysql/conf:/etc/mysql \
+-v /usr/local/docker/mysql/logs:/var/log/mysql \
+-v /usr/local/docker/mysql/data:/var/lib/mysql \
+-e MYSQL_ROOT_PASSWORD=123456 \
+-d mysql:5.7
+docker run -p 3306:3306 --name mysql57 -v f:\MySqlData:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root -d mysql:5.7
+docker run -p 3306:3306 --name mysql57 -v F:\DockerData\MySQL\db00\conf:/etc/mysql -v F:\DockerData\MySQL\db00\logs:/var/log/mysql -v F:\DockerData\MySQL\db00\data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root -d mysql:5.7
+
+docker run -p 3301:3306 --name mysql57-01 -v F:\DockerData\MySQL\db01\conf:/etc/mysql -v F:\DockerData\MySQL\db01\logs:/var/log/mysql -v F:\DockerData\MySQL\db01\data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root -d mysql:5.7
+docker run -p 3302:3306 --name mysql57-02 -v F:\DockerData\MySQL\db02\conf:/etc/mysql -v F:\DockerData\MySQL\db02\logs:/var/log/mysql -v F:\DockerData\MySQL\db02\data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root -d mysql:5.7
+docker exec -it mysql57 bash
+
+ 
+docker run -p 3301:3306 --name mysql8-01 -v F:\DockerData\MySQL\db01\conf\master:/etc/mysql/conf.d -v F:\DockerData\MySQL\db01\logs:/var/log/mysql -v F:\DockerData\MySQL\db01\data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root -d mysql:8.0.11 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+docker run -p 3302:3306 --name mysql8-02 -v F:\DockerData\MySQL\db02\conf\slave:/etc/mysql/conf.d -v F:\DockerData\MySQL\db02\logs:/var/log/mysql -v F:\DockerData\MySQL\db02\data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root -d mysql:8.0.11 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+docker run -p 3303:3306 --name mysql8-03 -v F:\DockerData\MySQL\db03\conf\slave:/etc/mysql/conf.d -v F:\DockerData\MySQL\db03\logs:/var/log/mysql -v F:\DockerData\MySQL\db03\data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=root -d mysql:8.0.11 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+docker exec -it mysql8-01 bash
+
+
+###redis
+docker run -itd -p 6379:6379 --name redis609 -v f:\DockerData\RedisData:/data redis:6.0.9 --appendonly yes
+docker exec -it redis609 /bin/bash
+
+###安装vim
+apt-get update
+apt-get install vim
+
+###查看容器IP
+docker inspect --format='{{.NetworkSettings.IPAddress}}' 容器Id
+
+###从主机复制到容器
+docker cp host_path containerID:container_path
+###从容器复制到主机
+docker cp containerID:container_path host_path
+
+###ShardingProxy
+docker run -d --name sharding-proxy -e PORT=3308 -p13308:3308 apache/sharding-proxy
+docker cp sharding-proxy:/opt/sharding-proxy/conf F:\DockerData\ShardingProxy
+docker run -d --name sharding-proxy -v F:\DockerData\ShardingProxy\conf:/opt/sharding-proxy/conf -v F:\DockerData\ShardingProxy\lib:/opt/sharding-proxy/ext-lib -e PORT=3308 -p13308:3308 apache/sharding-proxy

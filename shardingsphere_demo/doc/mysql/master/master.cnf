@@ -1,0 +1,10 @@
+[mysqld]
+log-bin=mysql-bin
+server_id=100
+binlog_do_db=user_db
+binlog_do_db=master_db
+binlog_do_db=order_db
+binlog_ignore_db=mysql
+binlog_ignore_db=sys
+binlog_ignore_db=information_schema
+binlog_ignore_db=performance_schema
